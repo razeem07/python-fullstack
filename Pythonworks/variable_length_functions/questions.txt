@@ -1,0 +1,48 @@
+========== string ==========
+
+1.given  a string 
+
+text = "On June 5th, 2024, we will celebrate @ our annual event: 'Tech Innovations 2024!'"
+
+print the folllowing: 
+
+a.The count of alphabets
+b.The count of spaces
+c.The count of special characters
+d.The count of numbers
+
+2. given a string
+
+text = "this is a simple question return word with maximum number of characters" 
+
+write a program that print the word with maimum number of characters
+
+3. given a string
+
+text = "this is a simple python program that print most recursive word . this program is simple" 
+
+write a program to print most frequent word
+
+4. Write a python program to check parenthesis are valid
+        sample input : {}
+        sample output : valid
+        sample input : {[]}
+        sample output : valid
+        sample input : {([)}
+        sample output : invalid
+
+
+
+
+=========== list ============= 
+
+1. write a program to check the given list is a palindrome
+
+2. write a program that print sublist of list lst that has maximum number of items in items without using max function
+
+lst= [[1,2],[1,2,3,4,[5,6,7],8],[9,10,11,[12,13],[14,15],16,[17,18]],[19,[20,21],[22,23],[24,25],26,[27,28,29,30,31,32,33,34]]]
+
+============= dctionary ============
+
+1.Write a Python program that prompts the user to input a number between 1 and 15.
+The program should then display the corresponding Roman numeral for that number.

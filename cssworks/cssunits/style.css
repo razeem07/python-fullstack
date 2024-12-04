@@ -1,0 +1,22 @@
+
+
+.box{
+
+    /* border-width: 2px;
+
+    border-color: black;
+
+    border-style: solid; */
+
+    border:solid black 2px;
+
+    background-color: green;
+    color: white;
+
+    width:700px;
+
+    height: 300px;
+
+
+
+}

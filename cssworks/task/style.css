@@ -1,0 +1,20 @@
+
+
+body{
+
+    background-color: black;
+    color: white;
+}
+
+.text-success{
+
+    color: green;
+}
+
+.text-white{
+    color: white;
+}
+
+.text-center{
+    text-align: center;
+}

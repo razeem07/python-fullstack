@@ -1,0 +1,37 @@
+SCHEMA:MOVIE
+fields:id,title,year,director,langauage
+
+========1)api for adding a new movie
+
+    url:localhost:8000/movie/
+    method:post
+    body:{title,year,director,langauge}
+    headers:nill
+
+=========2) api for listing all movies
+
+    url:localhost:8000/movie/
+
+    method:GET
+
+    body:nill
+
+    headers:nill
+
+
+=========2) api for fetching  movie detail
+
+    url:localhost:8000/movie/1000/
+
+    method:GET
+
+    body:nill
+
+    headers:nill
+
+
+
+
+base_url="https://jsonplaceholder.typicode.com/users/"
+method:GET
+

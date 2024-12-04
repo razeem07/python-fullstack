@@ -1,0 +1,7 @@
+1000,ajay,django,450
+1001,vijay,django,450
+1002,abi,django,450
+1003,vipin,django,450
+1004,tom,django,450
+1005,shibin,django,450
+1006,tinu,django,450

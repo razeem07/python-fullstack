@@ -1,0 +1,37 @@
+
+
+/* # id selector */
+
+
+#first{
+    color: green;
+}
+
+#second{
+
+    color: red;
+}
+
+/* danger=red */
+/* success=>green */
+/* primary=>blue */
+/* warning-yellow */
+
+/* TagName */
+/* id => # */
+/* class . */
+
+.text-danger{
+
+color:red;
+}
+
+.text-success{
+    color: green;
+}
+
+
+.text-dec-underline{
+
+    text-decoration: underline;
+}
