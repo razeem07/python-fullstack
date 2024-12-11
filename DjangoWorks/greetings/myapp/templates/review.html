@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Form</title>
+  </head>
+  <body>
+    <h1>Product Review</h1>
+
+    <br />
+    <form method="post">
+      {%csrf_token%}
+      <label for="product">Product:</label><br />
+      <input type="text" name="product" /><br />
+      <label for="comment">Comment</label><br />
+      <input type="text" name="comment" /><br />
+      <label for="rating">Rating</label><br />
+      <input type="number" name="rating" /><br />
+
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>

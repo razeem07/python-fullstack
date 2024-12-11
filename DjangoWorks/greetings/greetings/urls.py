@@ -22,6 +22,8 @@ from myapp.views import GoodAfternoonView
 from myapp.views import GoodEveningView
 from myapp.views import SachinView
 from myapp.views import MohanlalView
+from myapp.views import FeedbackView
+from myapp.views import ReviewView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +33,6 @@ urlpatterns = [
     path('goodevening/',GoodEveningView.as_view()),
     path('sachin/',SachinView.as_view()),
     path('mohanlal/',MohanlalView.as_view()),
+    path('feedback/',FeedbackView.as_view()),
+    path('review/',ReviewView.as_view()),
 ]
