@@ -6,8 +6,7 @@ class BmiForm(forms.Form):
 
     weight=forms.IntegerField()
 
-    age =forms.IntegerField()
-
+  
 
 
 class VehicleForm(forms.Form):
@@ -62,6 +61,10 @@ class BmrForm(forms.Form):
     activity_level =forms.ChoiceField(choices=ACTIVITY_CHOICES)
 
 
+class MilegeForm(forms.Form):
+    
+     distance=forms.IntegerField()
 
+     consumption=forms.IntegerField()
 
 

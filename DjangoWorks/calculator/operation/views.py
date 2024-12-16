@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.views.generic import View
 
-from  operation.forms import BmiForm,VehicleForm,BmrForm
+from  operation.forms import BmiForm,VehicleForm,BmrForm,MilegeForm
 
 
 
@@ -64,6 +64,27 @@ class BmiView(View):
         context={"form":form_instance}
 
         return render(request,"bmi.html",context)
+    
+    def post(self,request,*args,**kwargs):
+
+        form_data = request.POST
+
+        form_instance=BmiForm(form_data)
+
+        if form_instance.is_valid():
+
+            data = form_instance.cleaned_data
+
+            height=data.get("height")
+
+            weight=data.get("weight")
+
+            bmi = weight/(height/100)**2
+
+            print(bmi)
+
+            return render(request,"bmi.html",{"form":form_instance,"result":bmi})
+
 
 
 
@@ -88,3 +109,36 @@ class BmrView(View):
 
         return render(request,"bmr.html",context)
     
+
+class MilegeView(View):
+
+    def get(self,request,*args,**kwargs):
+
+        form_instance= MilegeForm()
+
+        context={"form":form_instance}
+
+        return render(request,"milage.html",context)
+    
+
+    def post(self,request,*args,**kwargs):
+
+        form_data = request.POST
+
+        form_instance=MilegeForm(form_data)
+
+        if form_instance.is_valid():
+
+            data = form_instance.cleaned_data
+
+            distance=data.get("distance")
+
+            consumption=data.get("consumption")
+
+            MILAGE = distance/consumption
+
+            print(MILAGE)
+
+            return render(request,"bmi.html",{"form":form_instance,"result":MILAGE})
+
+
