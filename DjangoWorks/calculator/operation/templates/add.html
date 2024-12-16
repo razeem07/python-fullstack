@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator - addition</title>
+  </head>
+  <body>
+    <h1>Addition</h1>
+
+    <form action="#" method="post">
+      {%csrf_token%}
+
+      <label for="num1">Enter Number 1</label>
+      <input type="number" placeholder="number 1" name="num1" />
+
+      <label for="num2">Enter Number 2</label>
+      <input type="number" placeholder="number 2" name="num2" />
+
+      <button type="submit">Add</button>
+    </form>
+
+    {{output}}
+  </body>
+</html>
