@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.views.generic import View
 
-from  operation.forms import BmiForm,VehicleForm,BmrForm,MilegeForm
+from  operation.forms import BmiForm,VehicleForm,BmrForm,MilegeForm,CalorieForm
 
 
 
@@ -141,4 +141,49 @@ class MilegeView(View):
 
             return render(request,"bmi.html",{"form":form_instance,"result":MILAGE})
 
+
+class CalorieView(View):
+
+    def get(self,request,*args,**kwargs):
+
+        form_instance= CalorieForm()
+
+        context={"form":form_instance}
+
+        return render(request,"calorie.html",context)
+
+    def post(self,request,*args,**kwargs):
+
+        form_data =request.POST
+
+        form_instance = CalorieForm(form_data)
+
+        if form_instance.is_valid():
+
+            data=form_instance.cleaned_data
+
+            print(data)
+
+            weight=data.get("weight")
+
+            height=data.get("height")
+
+            age=data.get("age")
+
+            gender=data.get("gender")
+
+            activity_level =data.get("activity_level")
+
+            if gender=="male":
+
+                bmr = 10* weight+6.25*height-5*age+5
+
+            else:
+
+                bmr = 10* weight+6.25*height-5*age-161
+
+            calorie = bmr*1.375
+
+
+        return render(request,"calorie.html",{"form":form_instance,"BMR":bmr,"CALORIE":calorie})
 

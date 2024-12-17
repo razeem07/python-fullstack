@@ -23,6 +23,7 @@ from operation.views import BmiView
 from operation.views import VehicleAddView
 from operation.views import BmrView
 from operation.views import MilegeView
+from operation.views import CalorieView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +33,6 @@ urlpatterns = [
     path('vehicle/',VehicleAddView.as_view()),
     path('bmr/',BmrView.as_view()),
     path('milage/',MilegeView.as_view()),
+    path('calorie/',CalorieView.as_view()),
 
 ]

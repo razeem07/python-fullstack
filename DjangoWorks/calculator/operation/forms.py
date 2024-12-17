@@ -68,3 +68,31 @@ class MilegeForm(forms.Form):
      consumption=forms.IntegerField()
 
 
+class CalorieForm(forms.Form):
+
+     height=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"form-control mb-3"}))
+
+     weight=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"form-control mb-3"}))
+
+     age =forms.IntegerField(widget=forms.NumberInput(attrs={"class":"form-control mb-3"}))
+
+     GENDER_CHOICES=(
+          ("male","Male"),
+          ("female","Female"),
+     )
+    
+     gender_type=forms.ChoiceField(choices=GENDER_CHOICES,widget=forms.Select(attrs={"class":"form-control form-select mb-3"}))
+
+
+     ACTIVITY_CHOICES=(
+        (1.2,"SEDENTARY"),
+        (1.375,"LIGHTLY ACTIVE"),
+        (1.55,"MODERATLY ACTIVE"),
+        (1.725,"VERY ACTIVE"),
+        (1.9,"EXTRA ACTIVE")
+    )
+     
+
+     activity_type=forms.ChoiceField(choices=ACTIVITY_CHOICES,widget=forms.Select(attrs={"class":"form-control form-select mb-3"}))
+
+
