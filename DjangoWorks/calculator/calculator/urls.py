@@ -24,15 +24,17 @@ from operation.views import VehicleAddView
 from operation.views import BmrView
 from operation.views import MilegeView
 from operation.views import CalorieView
+from operation.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add/',AdditionView.as_view()),
-    path('sub/',SubtractionView.as_view()),
-    path('bmi/',BmiView.as_view()),
-    path('vehicle/',VehicleAddView.as_view()),
-    path('bmr/',BmrView.as_view()),
-    path('milage/',MilegeView.as_view()),
-    path('calorie/',CalorieView.as_view()),
+    path('addition/',AdditionView.as_view(),name="add"),
+    path('sub/',SubtractionView.as_view(),name="sub"),
+    path('bmi/',BmiView.as_view(),name="bmi"),
+    path('vehicle/',VehicleAddView.as_view(),name="vehicle"),
+    path('bmr/',BmrView.as_view(),name="bmr"),
+    path('milage/',MilegeView.as_view(),name="milege"),
+    path('calorie/',CalorieView.as_view(),name="calorie"),
+    path('',IndexView.as_view(),name="index"),
 
 ]

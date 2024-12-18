@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Milage</title>
-  </head>
-  <body>
-    <form action="#" method="post">
-      {%csrf_token%} {{form}}
-      <input type="submit" value="Submit" />
-    </form>
+{%extends 'base.html'%} {%block main_block%}
+<form action="#" method="post">
+  {%csrf_token%} {{form}}
+  <input type="submit" value="Submit" />
+</form>
 
-    {{result}}
-  </body>
-</html>
+{{result}} {%endblock%}

@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vehicle</title>
-  </head>
-  <body>
-    <h1>Vehicle Form</h1>
-    <form action="#" method="post">
-      {%csrf_token%} {{form}}
-      <input type="submit" value="Submit" />
-    </form>
-  </body>
-</html>
+{%extends 'base.html'%} {%block main_block%}
+
+<h1>Vehicle Form</h1>
+<form action="#" method="post">
+  {%csrf_token%} {{form}}
+  <input type="submit" value="Submit" />
+</form>
+
+{%endblock%}

@@ -187,3 +187,8 @@ class CalorieView(View):
 
         return render(request,"calorie.html",{"form":form_instance,"BMR":bmr,"CALORIE":calorie})
 
+class IndexView(View):
+     
+     def get(self,request,*args,**kwargs):
+
+        return render(request,"index.html")
