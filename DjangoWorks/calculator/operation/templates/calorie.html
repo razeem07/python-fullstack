@@ -1,4 +1,4 @@
-{%extends 'base.html'%} {%block main_block%}
+{%extends 'base.html'%} {%load static%} {%block main_block%}
 <div class="container">
   <h1 class="text-center mb-5">Calorie Calculator</h1>
   <div class="row">
@@ -23,5 +23,7 @@
     <div class="col-4"></div>
   </div>
 </div>
+
+<img src="{%static '/images/calculator.png'%}"
 
 {%endblock%}

@@ -1,4 +1,6 @@
-{%extends 'base.html'%} {%block main_block%}
+{%extends 'base.html'%}
+{%load static%} 
+ {%block main_block%}
     <h1>Subtraction</h1>
 
     <form action="#" method="post">
@@ -12,6 +14,8 @@
 
       <button type="submit">Sub</button>
     </form>
+
+    <img src="{%static '/images/calculator.png'%}"
 
     {{output}}
 {%endblock%}

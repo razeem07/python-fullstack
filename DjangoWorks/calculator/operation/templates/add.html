@@ -1,4 +1,5 @@
 {%extends 'base.html'%} 
+{%load static%} 
 
 {%block main_block%}
 
@@ -14,6 +15,8 @@
   <input type="number" placeholder="number 2" name="num2" />
 
   <button type="submit">Add</button>
+  <br />
+  <img src="{%static '/images/calculator.png'%}"
 </form>
 
 {{output}} {%endblock%}

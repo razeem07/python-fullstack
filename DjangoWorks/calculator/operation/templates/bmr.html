@@ -1,8 +1,10 @@
-{%extends 'base.html'%} {%block main_block%}
+{%extends 'base.html'%} {%load static%} {%block main_block%}
 
 <form action="#" method="post">
   {%csrf_token%} {{form}}
   <input type="submit" value="Submit" />
 </form>
+
+<img src="{%static '/images/calculator.png'%}"
 
 {%endblock%}
