@@ -17,7 +17,7 @@
     />
   </head>
   <body>
-    {%for b in data%}
+    <!----{%for b in data%}
 
     <div>
       <p>Title : {{b.title}}</p>
@@ -33,9 +33,19 @@
       <hr />
     </div>
 
-    {%endfor%}
+    {%endfor%}-->
 
     <div class="container">
+      <div class="row my-3">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <form action="">
+            <input type="text" name="search" />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <div class="col-4"></div>
+      </div>
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -44,6 +54,7 @@
               <th>Title</th>
               <th>Author</th>
               <th>Price</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
             {%for b in data%}
@@ -52,6 +63,12 @@
               <td>{{b.title}}</td>
               <td>{{b.author}}</td>
               <td>{{b.price}}</td>
+              <td>
+                {%if b.image%}
+                <img src="{{b.image.url}}" alt="" class="w-25" height="50px" />
+
+                {%endif%}
+              </td>
               <td>
                 <a href="{%url 'book-detail' b.id%}"
                   ><i class="bi bi-eye"></i

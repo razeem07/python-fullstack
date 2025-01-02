@@ -6,6 +6,8 @@ from store.forms import BookForm
 
 from store.models import Book
 
+from django.db.models import Q
+
 
 
 # Create your views here.
@@ -25,7 +27,9 @@ class BookCreateView(View):
 
         form_data=request.POST
 
-        form_instance=BookForm(form_data)
+        
+
+        form_instance=BookForm(form_data,files=request.FILES)
 
         if form_instance.is_valid():
             
@@ -37,7 +41,8 @@ class BookCreateView(View):
                 price=data.get("price"),
                 language=data.get("language"),
                 genre=data.get("genre"),
-                year= data.get("year")
+                year= data.get("year"),
+                image=data.get("image")
 
             )
 
@@ -51,7 +56,15 @@ class BookListView(View):
 
     def get(self,request,*args,**kwargs):
 
+        search_text=request.GET.get("search")
+
+        print(search_text)
+    
         qs=Book.objects.all()
+
+        if search_text:
+
+            qs=qs.filter(Q(title__contains=search_text)| Q(author__contains=search_text))
         
         return render(request,"book_list.html",{"data":qs})
     
@@ -93,7 +106,8 @@ class BookUpdateView(View):
              "price":book_obj.price,
              "language":book_obj.language,
              "genre":book_obj.genre,
-             "year":book_obj.year
+             "year":book_obj.year,
+             "image":book_obj.image,
         }
 
 
@@ -109,7 +123,7 @@ class BookUpdateView(View):
 
         form_data=request.POST
 
-        form_instance=BookForm(form_data)
+        form_instance=BookForm(form_data,files=request.FILES)
 
         if form_instance.is_valid():
 
