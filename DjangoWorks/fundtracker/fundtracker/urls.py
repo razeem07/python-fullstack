@@ -1,5 +1,5 @@
 """
-URL configuration for djangoauthentication project.
+URL configuration for fundtracker project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -16,19 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
 from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    path("register/",views.SignUpView.as_view(),name="register"),
-
-    path("signin/",views.SignInView.as_view(),name="signin"),
-
-    path("index/",views.IndexView.as_view(),name="index"),
-
-    path("signout/",views.SignOutView.as_view(),name="signout"),
-
-    
+    path('register/',views.SignUpView.as_view(),name="register"),
 ]
