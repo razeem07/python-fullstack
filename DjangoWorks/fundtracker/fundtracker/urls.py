@@ -21,4 +21,8 @@ from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',views.SignUpView.as_view(),name="register"),
+    path('signin/',views.SignInView.as_view(),name="signin"),
+    path('index/',views.IndexView.as_view(),name="index"),
+    path('signout/',views.SignOutView.as_view(),name="signout"),
+    path('expense/add',views.ExpenseView.as_view(),name="expense-add"),
 ]
