@@ -25,4 +25,5 @@ urlpatterns = [
     path('index/',views.IndexView.as_view(),name="index"),
     path('signout/',views.SignOutView.as_view(),name="signout"),
     path('expense/add',views.ExpenseView.as_view(),name="expense-add"),
+    path('expense/<int:pk>/remove/',views.ExpenseDeleteView.as_view(),name="expense-delete"),
 ]

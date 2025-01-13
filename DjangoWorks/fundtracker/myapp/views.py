@@ -120,3 +120,14 @@ class ExpenseView(View):
          else:
              
              return render(request,"expense_add.html",{"form":form_instance})
+         
+
+class ExpenseDeleteView(View):
+
+    def get(self,request,*args,**kwargs):
+
+        id=kwargs.get("pk")
+
+        Expense.objects.get(id=id).delete()
+
+        return redirect("expense-add")
