@@ -6,7 +6,17 @@ from django.contrib.auth import authenticate,login,logout
 
 from myapp.models import Expense
 
+from django.db.models import Sum,Count
+
+from django.utils.decorators import method_decorator
+
+
+from myapp.decorators import signin_required
+
+from django.contrib import messages
+
 # Create your views here.
+
 class SignUpView(View):
 
     def get(self,request,*args,**kwargs):
@@ -66,6 +76,8 @@ class SignInView(View):
 
                 print("===Success==")
 
+                messages.success(request,"Login Success")
+
                 return redirect("index")
 
             else:
@@ -74,14 +86,29 @@ class SignInView(View):
 
                 return render(request,"signin.html",{"form":form_instance})
 
-
+@method_decorator(signin_required,name="dispatch")
 class IndexView(View):
 
     def get(self,request,*args,**kwargs):
 
-        return render(request,"index.html")
 
+        total_expense=Expense.objects.filter(owner=request.user).values("amount").aggregate(total=Sum("amount"))
 
+        print(total_expense)
+
+        category_summary=Expense.objects.filter(owner=request.user).values("category").annotate(total=Sum("amount"),count=Count("category"))
+
+        print(category_summary)
+
+        context={
+            "total_expense":total_expense.get("total"),
+            "category_summary":category_summary,
+           
+        }
+
+        return render(request,"index.html",context)
+
+@method_decorator(signin_required,name="dispatch")
 class SignOutView(View):
 
     def get(self,request,*args,**kwargs):
@@ -91,7 +118,7 @@ class SignOutView(View):
         return redirect("signin")
 
         
-
+@method_decorator(signin_required,name="dispatch")
 class ExpenseView(View):
 
      def get(self,request,*args,**kwargs):
@@ -121,7 +148,7 @@ class ExpenseView(View):
              
              return render(request,"expense_add.html",{"form":form_instance})
          
-
+@method_decorator(signin_required,name="dispatch")
 class ExpenseDeleteView(View):
 
     def get(self,request,*args,**kwargs):
@@ -131,3 +158,42 @@ class ExpenseDeleteView(View):
         Expense.objects.get(id=id).delete()
 
         return redirect("expense-add")
+
+@method_decorator(signin_required,name="dispatch")
+class ExpenseUpdateView(View):
+
+    def get(self,request,*args,**kwargs):
+
+        id=kwargs.get("pk")
+
+        expense_object=Expense.objects.get(id=id)
+
+        form_instance =ExpenseForm(instance=expense_object)
+
+        return render(request,"expense_update.html",{"form":form_instance})
+    
+    
+    def post(self,request,*args,**kwargs):
+
+         id=kwargs.get("pk")
+
+         expense_object=Expense.objects.get(id=id)
+
+         form_data= request.POST
+
+         form_instance=ExpenseForm(form_data,instance=expense_object)
+
+         if form_instance.is_valid():
+             
+             form_instance.save()
+
+             return redirect("expense-add")
+         
+         else:
+             
+             return render(request,"expense_update.html",{"form":form_instance})
+             
+
+
+
+

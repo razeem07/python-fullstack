@@ -6,6 +6,8 @@
     <title>Login</title>
   </head>
   <body>
+    {%for m in messages%} {{m}} {%endfor%}
+
     <form action="" method="post">
       {%csrf_token%} {{form}}
 
