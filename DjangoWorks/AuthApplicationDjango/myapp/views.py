@@ -11,6 +11,8 @@ from django.contrib import messages
 
 from django.contrib.auth import authenticate,login
 
+from django.core.mail import send_mail
+
 # Create your views here.
 
 
@@ -20,6 +22,16 @@ def send_otp(user_instance):
     user_instance.generate_otp()
 
     #send_email()
+
+    send_mail(
+        "One Time Password",
+        user_instance.otp,
+        "rrazeem07@gmail.com",
+        [user_instance.email],
+        fail_silently=False
+
+    )
+
 
     #send_Phone()
 
