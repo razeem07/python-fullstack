@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-{%load static%}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <title>Document</title>
   </head>
   <body>
-    <h1>Register</h1>
+    <h4>Edit Profile</h4>
 
-    <form action="" method="post">
+    <img src="{{form.instance.picture.url}}" alt="" />
+    <form action="" method="post" enctype="multipart/form-data">
       {%csrf_token%} {{form}}
 
-      <button type="submit">Login</button>
+      <button type="submit">Edit</button>
     </form>
   </body>
 </html>

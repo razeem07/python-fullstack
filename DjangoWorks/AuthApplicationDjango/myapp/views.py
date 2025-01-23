@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect
 
 from django.views.generic import View
 
-from myapp.forms import SignUpForm,SignInForm
+from myapp.forms import SignUpForm,SignInForm,UserProfileForm
 
-from myapp.models import User
+from myapp.models import User,Profile
 
 from django.contrib import messages
 
@@ -137,10 +137,47 @@ class SignInView(View):
 
                 login(request,user_instance)
 
-                return redirect("register")
+                return redirect("index")
 
         return render(request,"signin.html",{"form":form_instance}) 
 
+
+class IndexView(View):
+
+    def get(self,request,*args,**kwargs):
+
+
+        return render(request,"index.html") 
+    
+
+class ProfileUpdateView(View):
+    
+    def get(self,request,*args,**kwargs):
+
+        profile_instance=Profile.objects.get(owner=request.user)
+
+        form_instance=UserProfileForm(instance=profile_instance)
+
+        return render(request,"profile_edit.html",{"form":form_instance})
+
+    def post(self,request,*args,**kwargs):   
+
+        form_data=request.POST
+
+        profile_instance=Profile.objects.get(owner=request.user)
+
+        form_instance=UserProfileForm(form_data,instance=profile_instance,files=request.FILES)
+
+
+        if form_instance.is_valid():
+
+             form_instance.save()
+
+             return redirect("index")
+        
+        else:
+
+            return render(request,"profile_edit.html",{"form":form_instance})
 
 
 
